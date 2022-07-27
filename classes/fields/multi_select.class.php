@@ -24,8 +24,8 @@ class Cuztom_Field_Multi_Select extends Cuztom_Field
 
 				if( is_array( $value ) ) {
 					$is_selected = in_array( 0, $value );
-				} elseif( $value != '-1' && in_array( 0, $this->default_value )) {
-					$is_selected = true;
+				} else {
+					$is_selected = $value != '-1' && in_array( 0, $this->default_value );
 				}
 
 				$output .= '<option value="0" ' . ( $is_selected ? 'selected="selected"' : '' ) . '>' . $this->args['show_option_none'] . '</option>';
@@ -39,8 +39,8 @@ class Cuztom_Field_Multi_Select extends Cuztom_Field
 
 					if( is_array( $value ) ) {
 						$is_selected = in_array( $slug, $value );
-					} elseif( $value != '-1' && in_array( $slug, $this->default_value )) {
-						$is_selected = true;
+					} else {
+						$is_selected = $value != '-1' && in_array( $slug, $this->default_value );
 					}
 
 					$output .= '<option value="' . $slug . '" ' . ( $is_selected ? 'selected="selected"' : '' ) . '>' . $name . '</option>';
