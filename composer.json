@@ -12,5 +12,9 @@
     },
     "autoload": {
         "files": ["cuztom.php"]
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7",
+        "phpcompatibility/php-compatibility": "^9.3"
     }
 }
