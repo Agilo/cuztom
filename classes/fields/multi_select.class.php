@@ -19,14 +19,31 @@ class Cuztom_Field_Multi_Select extends Cuztom_Field
 	function _output( $value )
 	{
 		$output = '<select ' . $this->output_name() . ' ' . $this->output_id() . ' ' . $this->output_css_class() . ' multiple="true">';
-			if( isset( $this->args['show_option_none'] ) )
-				$output .= '<option value="0" ' . ( is_array( $value ) ? ( in_array( 0, $value ) ? 'selected="selected"' : '' ) : ( ( $value == '-1' ) ? '' : in_array( 0, $this->default_value ) ? 'selected="selected"' : '' ) ) . '>' . $this->args['show_option_none'] . '</option>';
+			if( isset( $this->args['show_option_none'] ) ) {
+				$is_selected = false;
+
+				if( is_array( $value ) ) {
+					$is_selected = in_array( 0, $value );
+				} elseif( $value != '-1' && in_array( 0, $this->default_value )) {
+					$is_selected = true;
+				}
+
+				$output .= '<option value="0" ' . ( $is_selected ? 'selected="selected"' : '' ) . '>' . $this->args['show_option_none'] . '</option>';
+			}
 
 			if( is_array( $this->options ) )
 			{
 				foreach( $this->options as $slug => $name )
 				{
-					$output .= '<option value="' . $slug . '" ' . ( is_array( $value ) ? ( in_array( $slug, $value ) ? 'selected="selected"' : '' ) : ( ( $value == '-1' ) ? '' : in_array( $slug, $this->default_value ) ? 'selected="selected"' : '' ) ) . '>' . $name . '</option>';
+					$is_selected = false;
+
+					if( is_array( $value ) ) {
+						$is_selected = in_array( $slug, $value );
+					} elseif( $value != '-1' && in_array( $slug, $this->default_value )) {
+						$is_selected = true;
+					}
+
+					$output .= '<option value="' . $slug . '" ' . ( $is_selected ? 'selected="selected"' : '' ) . '>' . $name . '</option>';
 				}
 			}
 		$output .= '</select>';
