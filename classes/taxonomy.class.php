@@ -197,7 +197,7 @@ class Cuztom_Taxonomy
 		{
 			$terms = wp_get_post_terms( $post_id, $this->name, array( 'fields' => 'names' ) );
 
-			echo implode( $terms, ', ' );
+			echo implode( ', ', $terms );
 		}
 	}
 

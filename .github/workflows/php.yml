@@ -49,4 +49,4 @@ jobs:
         run: find . -path ./vendor -prune -o -name '*.php' | xargs -I file php -lf file
 
       - name: PHP Code Sniffer
-        run: vendor/bin/phpcs --ignore="*/vendor/*" --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion ${{ matrix.php-version }} .
+        run: vendor/bin/phpcs --ignore="*/vendor/*" --standard=PHPCompatibility --runtime-set testVersion ${{ matrix.php-version }} -p .

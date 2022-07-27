@@ -195,7 +195,7 @@ class Cuztom_Term_Meta extends Cuztom_Meta
 				{
 					if( $field->repeatable && $field->_supports_repeatable )
 					{
-						echo implode( $meta, ', ' );
+						echo implode( ', ', $meta );
 					}
 					else
 					{
