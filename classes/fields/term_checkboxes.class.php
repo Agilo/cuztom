@@ -34,7 +34,15 @@ class Cuztom_Field_Term_Checkboxes extends Cuztom_Field
 			{
 				foreach( $this->terms as $term )
 				{
-					$output .= '<input type="checkbox" ' . $this->output_name() . ' ' . $this->output_id( $this->id . $this->after_id . '_' . Cuztom::uglify( $term->name ) ) . ' ' . $this->output_css_class() . ' value="' . $term->term_id . '" ' . ( is_array( $value ) ? ( in_array( $term->term_id, $value ) ? 'checked="checked"' : '' ) : ( ( $value == '-1' ) ? '' : in_array( $term->term_id, $this->default_value ) ? 'checked="checked"' : '' ) ) . ' /> ';
+					$is_checked = false;
+
+					if( is_array( $value ) ) {
+						$is_checked = in_array( $term->term_id, $value );
+					} else {
+						$is_checked = $value != '-1' && in_array( $term->term_id, $this->default_value );
+					}
+
+					$output .= '<input type="checkbox" ' . $this->output_name() . ' ' . $this->output_id( $this->id . $this->after_id . '_' . Cuztom::uglify( $term->name ) ) . ' ' . $this->output_css_class() . ' value="' . $term->term_id . '" ' . ( $is_checked ? 'checked="checked"' : '' ) . ' /> ';
 					$output .= '<label for="' . $this->id . $this->after_id . '_' . Cuztom::uglify( $term->name ) . '">' . $term->name . '</label>';
 					$output .= '<br />';
 				}
