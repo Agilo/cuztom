@@ -2,7 +2,7 @@
 
 This helper can be used to quickly register Custom Post Types, Taxonomies, Meta Boxes, Menu Pages and Sidebars within your Wordpress projects. Please comment, review, watch, fork and report bugs.
 
-**Version:** 2.9.20 <br/>
+**Version:** 2.9.21 <br/>
 **Supports:** 3.5 - 4.3
 
 ## Basic usage
@@ -19,7 +19,7 @@ To add Custom Taxonomies to the newly created Post Type, simply call this method
 
 	$book->add_taxonomy( 'Author' );
 
-You can also call this as a seperate class like this. The second parameter is the Post Type name.
+You can also call this as a separate class like this. The second parameter is the Post Type name.
 
 	$taxonomy = register_cuztom_taxonomy( 'Author', 'book' );
 
